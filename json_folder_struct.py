@@ -77,10 +77,6 @@ def create_file_folder_recursive(
 
 
 def create_struct_from_folder(folder_path: Path) -> FolderJsonType:
-    if not folder_path.is_dir():
-        print(TextColors.BLUE + f"Given is not a valid folder path.")
-        return
-
     folder_struct: FolderJsonTypeStruct = []
     sub_folder_structs: FolderJsonType = {}
 
@@ -114,7 +110,7 @@ def generate_file_folder(arg_file_path: str) -> None:
 
             if root_path.exists() and os.path.isfile(root_path):
                 print(TextColors.BLUE + f"File with same name already exists.")
-                return
+                continue
             
             if not root_path.is_dir():
                 print(TextColors.BLUE + f"Creating {root_path}")
@@ -126,14 +122,17 @@ def generate_file_folder(arg_file_path: str) -> None:
             # create files and folder
             create_file_folder_recursive(root_path, root_path, root_folder_struc)
 
-            print(TextColors.RESET)
-
 
 def generate_struct_from_folder(arg_folder_paths: str) -> None:
     folder_structs: FolderJsonType = {}
 
     for path in arg_folder_paths:
         folder_path = Path(path).absolute()
+        
+        if not folder_path.is_dir():
+            print(TextColors.BLUE + f"{folder_path} not a valid folder path.")
+            continue
+
         print(TextColors.BLUE + f"Generating for {folder_path}")
         folder_structs.update(create_struct_from_folder(folder_path))
 
