@@ -4,7 +4,6 @@ import argparse
 import traceback
 
 from pathlib import Path
-from types import NoneType
 from enum import Enum, unique
 from typing import Dict, List, Union
 
@@ -22,7 +21,7 @@ class TextColors(str, Enum):
 
 
 # define folder structure json data type
-FolderJsonTypeStruct = Union[List[Union['FolderJsonType', str]], NoneType]
+FolderJsonTypeStruct = Union[List[Union['FolderJsonType', str]], None]
 FolderJsonType = Dict[str, FolderJsonTypeStruct]
 
 
@@ -34,7 +33,7 @@ def create_file_folder_recursive(
 ) -> None:
     if (
         folder_struct and
-        isinstance(folder_struct, (dict, list, str))
+        isinstance(folder_struct, (Dict, List, str))
     ):
         file_names: List[str] = [x.name for x in folder_path.glob("*") if x.is_file()]
         existing_dirs: List[str] = [f.name for f in folder_path.iterdir() if f.is_dir()]
@@ -45,7 +44,7 @@ def create_file_folder_recursive(
         for file_or_folder in folder_struct:
             if isinstance(file_or_folder, str) and len(file_or_folder) > 0:
                 file_names.append(file_or_folder)
-            elif isinstance(file_or_folder, dict):
+            elif isinstance(file_or_folder, Dict):
                 folder_names.extend(file_or_folder.keys())
                 folder_structs.append(file_or_folder)
 

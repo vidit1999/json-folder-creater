@@ -1,5 +1,7 @@
 # Folder Structure Generation from JSON file
 
+> You need `Python>=3.6` installed to use this tool.
+
 ## What this tool is about?
 * This tool can help you generate folder structure from a JSON file. This JSON file needs to follow certain rules,
     1. JSON file should contain keys which specify where to create file/folder.
@@ -49,11 +51,11 @@ Above command will generate two folders with structure like this,
 ```
 And if you run below command, it will create same folder structure specified in `folder_structure.json` and save it in that file.
 ```shell
-$ python json_folder_struct.py -s test_folder test_folder_2
+$ python3 json_folder_struct.py -s test_folder test_folder_2
 ```
 To get help run
 ```shell
-$ python json_folder_struct.py
+$ python3 json_folder_struct.py
 ```
 
 ## Features
