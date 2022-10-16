@@ -3,7 +3,7 @@
 > You need `Python>=3.6` installed to use this tool.
 
 ## What this tool is about?
-* This tool can help you generate folder structure from a JSON file. This JSON file needs to follow certain rules,
+* This tool can help you generate folder structure from a JSON file ([Example](./folder_structure.json)). This JSON file needs to follow rules stade below,
     1. JSON file should contain keys which specify where to create file/folder.
     2. This top level keys can represent folder's relative or absolute path.
     3. Corresponding value of that key will specify the desired folder structure.

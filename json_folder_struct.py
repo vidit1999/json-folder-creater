@@ -82,7 +82,6 @@ def create_struct_from_folder(folder_path: Path) -> FolderJsonType:
         return
 
     folder_struct: FolderJsonTypeStruct = []
-
     sub_folder_structs: FolderJsonType = {}
 
     for x in folder_path.glob("*"):
@@ -144,7 +143,7 @@ def generate_struct_from_folder(arg_folder_paths: str) -> None:
     print(TextColors.BLUE + "Save structs in folder_structure.json")
     
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser()
 
     meg = parser.add_mutually_exclusive_group()
@@ -178,3 +177,6 @@ if __name__ == "__main__":
     finally:
         # reset coloring of terminal
         print(TextColors.RESET + "Finished!!")
+
+if __name__ == "__main__":
+    main()
